@@ -6,13 +6,12 @@
 }
 
 .MealsLoading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 37vh; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
 }
-
 
 .MealsError {
   color: #f44336;
@@ -25,11 +24,17 @@
 }
 
 .container {
-  position: fixed;
-  top: 50vh;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh; 
 }
+.ClipLoader {
+  position: relative;
+  top: -35px; 
+}
+
 
 .meals ul {
   list-style: none;

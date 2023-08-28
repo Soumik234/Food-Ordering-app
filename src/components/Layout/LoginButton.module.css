@@ -1,0 +1,29 @@
+.button {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: #4d1601;
+    color: white;
+    padding: 0.75rem 3rem;
+    border-radius: 25px;
+    font-weight: bold;
+  }
+
+  .button.logoutButton {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: #642208;
+    color: white;
+    padding: 0.75rem 3rem;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-left: 37rem;
+  }
+
+  .button:hover,
+  .button:active {
+    background-color: #2c0d00;
+  }
+
+  

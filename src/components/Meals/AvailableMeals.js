@@ -41,12 +41,13 @@ const AvailabeMeals = () => {
 
   if (isLoading) {
     return (
-      <div>
+      
         <div className={classes.container}>
-          <ClipLoader color="#36d7b7" size={50} cssOverride={{}} />
+          <ClipLoader color="#36d7b7" size={50} cssOverride={{}} className={classes.ClipLoader}/>
+          <p className={classes.MealsLoading}>Loading.....</p>
         </div>
-        <p className={classes.MealsLoading}>Loading.....</p>
-      </div>
+        
+      
     );
   }
   if (httpError) {
