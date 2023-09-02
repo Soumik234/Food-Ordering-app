@@ -14,7 +14,6 @@ const Header = (props) => {
     <Fragment>
     <header className={classes.header}>
       <h1>Somato</h1>
-      
       {isLogged ? (
         <LoginButton name="Logout" onLoginSuccess={props.onLoginSuccess} />
       ) : (

@@ -11,6 +11,7 @@
 
   .button.logoutButton {
     cursor: pointer;
+    align-items: right;
     font: inherit;
     border: none;
     background-color: #642208;
@@ -18,7 +19,7 @@
     padding: 0.75rem 3rem;
     border-radius: 25px;
     font-weight: bold;
-    margin-left: 37rem;
+    margin-left: 600px;
   }
 
   .button:hover,
