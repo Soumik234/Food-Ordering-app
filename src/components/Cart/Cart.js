@@ -31,7 +31,7 @@ const Cart = (props) => {
   const checkout = async () => {
     try {
       console.log("Checkout function called");
-      const response = await fetch("http://localhost:5000/api/meals/checkout", {
+      const response = await fetch("https://food-ordering-backend-lc7d.onrender.com/api/meals/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ const Cart = (props) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/meals/submit",
+        "https://food-ordering-backend-lc7d.onrender.com/api/meals/submit",
         {
           user: userData,
           orderedItems: cartCtx.items,
