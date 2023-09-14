@@ -18,7 +18,7 @@ const Cart = (props) => {
 
   const totalAmount = `₹${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
-  const { isLogged,setLoginStatus} = useAuth();
+  const { isLogged, setLoginStatus } = useAuth();
 
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
@@ -28,23 +28,47 @@ const Cart = (props) => {
     cartCtx.addItem({ ...item, amount: 1 });
   };
 
+  const checkout = async () => {
+    try {
+      console.log("Checkout function called");
+      const response = await fetch("http://localhost:5000/api/meals/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ items: cartCtx.items }),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        if (responseData && responseData.url) {
+          window.location.assign(responseData.url);
+        } else {
+          console.error("Error during checkout: Missing URL in the response");
+        }
+      } else {
+        console.error("Error during checkout:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+    }
+  };
+
   const orderHandler = () => {
+    if (!isLogged) {
+      setIsLoginModalOpen(true);
+      setLoginStatus(<strong>Please Login before ordering..</strong>);
+      return;
+    }
     setIsCheckout(true);
   };
 
-
   const submitOrderHandler = async (userData) => {
-    if(!isLogged){
-      console.log("Please log in to place your order.");
-      setIsLoginModalOpen(true);
-      setLoginStatus("Please Login before ordering..");
-      return;
-    }
     setIsSubmitting(true);
 
     try {
       const response = await axios.post(
-        "https://food-ordering-backend-lc7d.onrender.com/api/meals/submit",
+        "http://localhost:5000/api/meals/submit",
         {
           user: userData,
           orderedItems: cartCtx.items,
@@ -59,13 +83,13 @@ const Cart = (props) => {
       console.log(response.data.message);
       setIsSubmitting(false);
       setSubmitted(true);
-      cartCtx.clearCart();
+      // cartCtx.clearCart();
     } catch (error) {
       console.error("Error submitting order:", error);
       console.error("Error submitting order:", error);
-    setIsSubmitting(false); 
-    localStorage.removeItem('token');
-    console.log(error.response);
+      setIsSubmitting(false);
+      localStorage.removeItem("token");
+      console.log(error.response);
     }
   };
 
@@ -115,10 +139,13 @@ const Cart = (props) => {
 
   const submittedModalContent = (
     <Fragment>
-      <p>Successfully placed your order!</p>
+      <p>Proceed to payment!</p>
       <div className={classes.actions}>
         <button className={classes.button} onClick={props.onClose}>
           Close
+        </button>
+        <button className={classes.button} onClick={checkout}>
+          Checkout
         </button>
       </div>
     </Fragment>
@@ -130,7 +157,7 @@ const Cart = (props) => {
       {isSubmitting && isSubmittingModalContent}
       {submitted && submitted && submittedModalContent}
       {isLoginModalOpen && !isLogged && (
-        <Login onCloseLogin={() => setIsLoginModalOpen(false)} /> 
+        <Login onCloseLogin={() => setIsLoginModalOpen(false)} />
       )}
     </Modal>
   );
