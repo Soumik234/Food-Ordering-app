@@ -9,15 +9,15 @@ import { useAuth } from "../../UserContext";
 const Header = (props) => {
   const { isLogged } = useAuth();
   console.log("Header component - isLogged:", isLogged);
- 
+
   return (
     <Fragment>
-    <header className={classes.header}>
-      <h1>Somato</h1>
-      {isLogged ? (
-        <LoginButton name="Logout" onLoginSuccess={props.onLoginSuccess} />
-      ) : (
-        <div className={classes.loginButtonsContainer}> 
+      <header className={classes.header}>
+        <h1>Somato</h1>
+        {isLogged ? (
+          <LoginButton name="Logout" onLoginSuccess={props.onLoginSuccess} />
+        ) : (
+          <div className={classes.loginButtonsContainer}>
             <LoginButton
               name="Login"
               onClick={props.onShowLogin}
@@ -25,13 +25,15 @@ const Header = (props) => {
             />
             <LoginButton name="Signup" onClick={props.onShowRegister} />
           </div>
-      )}
-      <HeaderCartButton onClick={props.onShow} />
-    </header>
-    <div className={classes["main-image"]}>
-      <img src={mealsImage} alt="Image of food" />
-    </div>
-  </Fragment>
+        )}
+        <div className={classes.cartButton}>
+          <HeaderCartButton onClick={props.onShow} />
+        </div>
+      </header>
+      <div className={classes["main-image"]}>
+        <img src={mealsImage} alt="Image of food" />
+      </div>
+    </Fragment>
   );
 };
 

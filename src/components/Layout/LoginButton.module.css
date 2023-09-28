@@ -19,7 +19,7 @@
     padding: 0.75rem 3rem;
     border-radius: 25px;
     font-weight: bold;
-    margin-left: 600px;
+    margin-left: auto;
   }
 
   .button:hover,
@@ -27,4 +27,9 @@
     background-color: #2c0d00;
   }
 
-  
+  @media (max-width: 768px) {
+    .button.logoutButton {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }

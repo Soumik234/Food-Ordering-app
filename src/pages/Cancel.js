@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const  Cancel=() =>{
     const styles = {
@@ -7,7 +7,12 @@ const  Cancel=() =>{
         margin: '50px'        
       };
     return (
-        <h1 style={styles}>Sorry to see you cancelled your Stripe payment!</h1>
+        <>
+        <h1 style={styles}>Sorry to see you cancelled your Stripe payment!
+        <br></br>
+        <Link to="/">Return to Home Page</Link>
+        </h1>
+        </>
     )
 }
 
