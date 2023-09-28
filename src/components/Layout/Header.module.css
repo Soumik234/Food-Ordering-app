@@ -51,12 +51,9 @@
   .loginButtonsContainer {
     flex-direction: row; 
     align-items: center;
-    margin-top: 10px;
+    margin-left: 0px;
   }
-  .loginButtonsContainer button{
-    margin: 0px,5px,0px,5px;
-    
-  }
+  
   
   .cartButton {
     margin-top: 15px; 
