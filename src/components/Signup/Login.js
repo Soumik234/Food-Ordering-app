@@ -26,7 +26,7 @@ const Login = (props) => {
 
     try {
       const response = await axios.post(
-        "https://food-ordering-backend-lc7d.onrender.com/api/meals/login",
+        "https://food-ordering-backend-euky.vercel.app/api/meals/login",
         {
           username: username,
           password: password,

@@ -15,7 +15,7 @@ const AvailabeMeals = () => {
     const fetchMeals = async () => {
       try {
         const response = await axios.get(
-          "https://food-ordering-backend-lc7d.onrender.com/api/meals/"
+          "https://food-ordering-backend-euky.vercel.app/api/meals/"
         );
         if (!response.status === 200) {
           throw new Error("Something went wrong!");

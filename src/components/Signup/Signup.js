@@ -18,7 +18,7 @@ const Register = (props) => {
       return;
     
     }
-    axios.post("https://food-ordering-backend-lc7d.onrender.com/api/meals/register", {
+    axios.post("https://food-ordering-backend-euky.vercel.app/api/meals/register", {
       username: username,
       email: email,
       phone: phone,
